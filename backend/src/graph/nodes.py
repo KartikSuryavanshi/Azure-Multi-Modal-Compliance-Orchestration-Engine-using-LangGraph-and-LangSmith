@@ -90,24 +90,35 @@ def audit_content_node(state: VideoAuditState) -> Dict[str, Any]:
         temperature=0.0
     )
 
+    embedding_deployment = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT") or os.getenv("AZURE_OPENAI_EMBED_DEPLOYMENT")
+    if not embedding_deployment:
+        raise ValueError(
+            "Missing embedding deployment. Set AZURE_OPENAI_EMBEDDING_DEPLOYMENT in .env"
+        )
+
     embeddings = AzureOpenAIEmbeddings(
-        azure_deployment="text-embedding-3-small",
+        azure_deployment=embedding_deployment,
         openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
     )
 
-    vector_store = AzureSearch(
-        azure_search_endpoint=os.getenv("AZURE_SEARCH_ENDPOINT"),
-        azure_search_key=os.getenv("AZURE_SEARCH_API_KEY"),
-        index_name=os.getenv("AZURE_SEARCH_INDEX_NAME"),
-        embedding_function=embeddings.embed_query
-    )
-    
-    # RAG Retrieval
-    ocr_text = state.get("ocr_text", [])
-    query_text = f"{transcript} {' '.join(ocr_text)}"
-    docs = vector_store.similarity_search(query_text, k=3)
-    
-    retrieved_rules = "\n\n".join([doc.page_content for doc in docs])
+    retrieved_rules = ""
+    try:
+        vector_store = AzureSearch(
+            azure_search_endpoint=os.getenv("AZURE_SEARCH_ENDPOINT"),
+            azure_search_key=os.getenv("AZURE_SEARCH_API_KEY"),
+            index_name=os.getenv("AZURE_SEARCH_INDEX_NAME"),
+            embedding_function=embeddings.embed_query
+        )
+
+        # RAG Retrieval
+        ocr_text = state.get("ocr_text", [])
+        query_text = f"{transcript} {' '.join(ocr_text)}"
+        docs = vector_store.similarity_search(query_text, k=3)
+
+        retrieved_rules = "\n\n".join([doc.page_content for doc in docs])
+    except Exception as retrieval_error:
+        logger.warning(f"RAG retrieval unavailable, continuing without KB context: {retrieval_error}")
+        ocr_text = state.get("ocr_text", [])
     
     # --- UPDATED PROMPT WITH STRICT SCHEMA ---
     system_prompt = f"""

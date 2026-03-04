@@ -7,7 +7,12 @@ import time
 import logging
 import requests
 import yt_dlp  
-from azure.identity import DefaultAzureCredential
+from azure.identity import (
+    AzureCliCredential,
+    ChainedTokenCredential,
+    EnvironmentCredential,
+    InteractiveBrowserCredential,
+)
 
 logger = logging.getLogger("video-indexer")
 
@@ -18,7 +23,24 @@ class VideoIndexerService:
         self.subscription_id = os.getenv("AZURE_SUBSCRIPTION_ID")
         self.resource_group = os.getenv("AZURE_RESOURCE_GROUP")
         self.vi_name = os.getenv("AZURE_VI_NAME", "kartik-azure-indexer")
-        self.credential = DefaultAzureCredential()
+        self.credential = self._build_credential()
+
+    def _build_credential(self):
+        tenant_id = os.getenv("AZURE_TENANT_ID")
+
+        env_credential = EnvironmentCredential()
+        cli_credential = AzureCliCredential(tenant_id=tenant_id) if tenant_id else AzureCliCredential()
+        browser_credential = (
+            InteractiveBrowserCredential(tenant_id=tenant_id)
+            if tenant_id
+            else InteractiveBrowserCredential()
+        )
+
+        return ChainedTokenCredential(
+            env_credential,
+            cli_credential,
+            browser_credential,
+        )
 
     def get_access_token(self):
         """Generates an ARM Access Token."""
