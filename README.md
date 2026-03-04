@@ -7,29 +7,32 @@ This project demonstrates how **multi-agent AI orchestration** can automate comp
 
 ---
 
-# 🚀 Features
+# Features
 
-- 🎥 **Multimodal Video Processing**
+- **Multimodal Video Processing**
   - Uses **Azure Video Indexer** to extract transcripts and OCR text from video content.
 
-- 🧠 **AI-powered Compliance Reasoning**
+- **AI-powered Compliance Reasoning**
   - Uses **Azure OpenAI GPT-4o** for contextual reasoning.
 
-- 🔍 **Retrieval Augmented Generation (RAG)**
+- **Retrieval Augmented Generation (RAG)**
   - Compliance rules stored in **Azure AI Search**
   - Retrieved using **OpenAI embeddings**
 
-- 🔄 **LangGraph Workflow**
+- **LangGraph Workflow**
   - Orchestrates a multi-step compliance pipeline with modular reasoning nodes.
 
-- 📊 **Observability**
+- **Observability**
   - Full tracing using **LangSmith**
   - System monitoring via **Azure Application Insights**
 
 ---
 
-# 🧱 Architecture Overview
+# Architecture Overview
+
 ## Architecture Flow
+
+<img width="1238" height="623" alt="Screenshot 2026-03-04 at 9 22 54 AM" src="https://github.com/user-attachments/assets/2a6fc0f9-1eb2-4f49-96e3-09b0e39dac92" />
 
 ```
 Video Upload
@@ -69,28 +72,41 @@ Compliance Report Generation
 
 ---
 
-# ⚙️ Installation
+# Installation
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/compliance-engine.git
-cd compliance-engine
+git clone https://github.com/KartikSuryavanshi/Azure-Multi-Modal-Compliance-Orchestration-Engine-using-LangGraph-and-LangSmith.git
+```
+---
+
+### Create Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate
 ```
 
 ---
 
-### 2️⃣ Install Dependencies
+### Install Dependencies
 
-Using **uv**
+Since this project uses **pyproject.toml**, install dependencies with:
 
 ```bash
-uv pip install -r requirements.txt
+pip install -e .
+```
+
+Or install directly:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-# 🔐 Environment Configuration
+# Environment Configuration
 
 Create a `.env` file in the root directory.
 
@@ -136,14 +152,14 @@ LANGSMITH_API_KEY=""
 LANGSMITH_PROJECT="brand-guardian-prod"
 ```
 
-⚠️ **Important**
+**Important**
 
 Never commit `.env` to GitHub.  
 Make sure `.env` is included in `.gitignore`.
 
 ---
 
-# ▶️ Running the Server
+# Running the Server
 
 Start the backend API using **Uvicorn**
 
@@ -204,21 +220,23 @@ Each node represents an **agent responsible for a specific reasoning task**.
 
 ---
 
-# 📊 Example Compliance Output
+# Example Compliance Output
 
-```
-Video: marketing_campaign_01.mp4
+<img width="1399" height="786" alt="Screenshot 2026-03-04 at 9 16 00 AM" src="https://github.com/user-attachments/assets/a5def7e4-4496-4ed7-87ab-5621404449e9" />
 
-Detected Issues:
 
-1. Misleading promotional claim detected
-2. Missing regulatory disclaimer
-3. Non-compliant product statement
+# Observability dashboard LangSmith
 
-Risk Score: HIGH
+(Link - https://smith.langchain.com/o/82e4987c-f9c4-43fe-9e5e-e3fd70b1c645/projects/p/f88a2d6b-3cc7-468f-b058-8cd6d00e199a?timeModel=%7B%22duration%22%3A%221d%22%7D&peek=019cb6d5-33ac-7b03-93eb-55416c25cbf3&peeked_trace=019cb6d5-33ac-7b03-93eb-55416c25cbf3)
 
-Recommendation:
-Update marketing message and add mandatory disclaimer.
-```
+<img width="1440" height="786" alt="Screenshot 2026-03-04 at 9 18 31 AM" src="https://github.com/user-attachments/assets/a44f6982-fc21-42ca-9515-ebd96ed3e430" />
+
+# Azure Application Insights
+
+
+![WhatsApp Image 2026-03-04 at 9 00 40 AM](https://github.com/user-attachments/assets/a6f87baa-c2d5-4df2-8d98-4c8b3e937c5c)
+
+
+
 
 ---
