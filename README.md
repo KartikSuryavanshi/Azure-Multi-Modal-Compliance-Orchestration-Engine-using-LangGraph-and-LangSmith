@@ -54,7 +54,7 @@ Compliance Report Generation
 
 ---
 
-# 🛠 Tech Stack
+# Tech Stack
 
 | Component | Technology |
 |-----------|------------|
@@ -202,7 +202,7 @@ http://127.0.0.1:8000/redoc
 
 ---
 
-# 🔄 LangGraph Compliance Pipeline
+# LangGraph Compliance Pipeline
 
 The system uses **LangGraph state orchestration** to manage the AI workflow.
 
