@@ -224,12 +224,15 @@ Each node represents an **agent responsible for a specific reasoning task**.
 
 <img width="1399" height="786" alt="Screenshot 2026-03-04 at 9 16 00 AM" src="https://github.com/user-attachments/assets/a5def7e4-4496-4ed7-87ab-5621404449e9" />
 
+---
 
 # Observability dashboard LangSmith
 
 (Link - https://smith.langchain.com/o/82e4987c-f9c4-43fe-9e5e-e3fd70b1c645/projects/p/f88a2d6b-3cc7-468f-b058-8cd6d00e199a?timeModel=%7B%22duration%22%3A%221d%22%7D&peek=019cb6d5-33ac-7b03-93eb-55416c25cbf3&peeked_trace=019cb6d5-33ac-7b03-93eb-55416c25cbf3)
 
 <img width="1440" height="786" alt="Screenshot 2026-03-04 at 9 18 31 AM" src="https://github.com/user-attachments/assets/a44f6982-fc21-42ca-9515-ebd96ed3e430" />
+
+---
 
 # Azure Application Insights
 
