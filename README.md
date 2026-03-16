@@ -1,4 +1,4 @@
-# Azure Multi-Modal Compliance Orchestration Engine
+# BrandGuardian-AI
 
 An **AI-powered video compliance auditing system** built using **LangGraph, LangSmith, and Azure AI services**.  
 The system analyzes multimedia content (video transcripts + OCR text) and checks it against regulatory compliance rules using a **Retrieval-Augmented Generation (RAG)** architecture.
