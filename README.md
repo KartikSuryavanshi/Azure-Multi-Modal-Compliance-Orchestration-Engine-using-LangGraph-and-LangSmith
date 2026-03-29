@@ -159,7 +159,7 @@ Make sure `.env` is included in `.gitignore`.
 
 ---
 
-# Running the Server
+# Running the Server-
 
 Start the backend API using **Uvicorn**
 
