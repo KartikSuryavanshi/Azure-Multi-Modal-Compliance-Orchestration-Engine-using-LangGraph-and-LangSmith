@@ -178,7 +178,7 @@ uv run uvicorn backend.src.api.server:app --reload
 
 ---
 
-# 🌐 Access the API
+# Access the API
 
 After starting the server open:
 
