@@ -5,8 +5,6 @@ The system analyzes multimedia content (video transcripts + OCR text) and checks
 
 This project demonstrates how **multi-agent AI orchestration** can automate compliance verification pipelines for media and marketing content.
 
----
-
 # Features
 
 - **Multimodal Video Processing**
@@ -25,8 +23,6 @@ This project demonstrates how **multi-agent AI orchestration** can automate comp
 - **Observability**
   - Full tracing using **LangSmith**
   - System monitoring via **Azure Application Insights**
-
----
 
 # Architecture Overview
 
@@ -52,8 +48,6 @@ Compliance Violation Detection
 Compliance Report Generation
 ```
 
----
-
 # Tech Stack
 
 | Component | Technology |
@@ -69,8 +63,6 @@ Compliance Report Generation
 | Backend | FastAPI |
 | Server | Uvicorn |
 | Environment Manager | uv |
-
----
 
 # Installation
 
@@ -88,8 +80,6 @@ python -m venv venv
 source venv/bin/activate
 ```
 
----
-
 ### Install Dependencies
 
 Since this project uses **pyproject.toml**, install dependencies with:
@@ -103,8 +93,6 @@ Or install directly:
 ```bash
 pip install -r requirements.txt
 ```
-
----
 
 # Environment Configuration
 
@@ -157,8 +145,6 @@ LANGSMITH_PROJECT="brand-guardian-prod"
 Never commit `.env` to GitHub.  
 Make sure `.env` is included in `.gitignore`.
 
----
-
 # Running the Server-
 
 Start the backend API using **Uvicorn**
@@ -175,8 +161,6 @@ uv run uvicorn backend.src.api.server:app --reload
 | `uvicorn` | ASGI server for FastAPI |
 | `backend.src.api.server:app` | Points to the FastAPI app |
 | `--reload` | Automatically reloads server when code changes |
-
----
 
 # Access the API
 
@@ -200,8 +184,6 @@ ReDoc
 http://127.0.0.1:8000/redoc
 ```
 
----
-
 # LangGraph Compliance Pipeline
 
 The system uses **LangGraph state orchestration** to manage the AI workflow.
@@ -218,13 +200,9 @@ Report Generation Node
 
 Each node represents an **agent responsible for a specific reasoning task**.
 
----
-
 # Example Compliance Output
 
 <img width="1399" height="786" alt="Screenshot 2026-03-04 at 9 16 00 AM" src="https://github.com/user-attachments/assets/a5def7e4-4496-4ed7-87ab-5621404449e9" />
-
----
 
 # Observability dashboard LangSmith
 
@@ -232,14 +210,9 @@ Each node represents an **agent responsible for a specific reasoning task**.
 
 <img width="1440" height="786" alt="Screenshot 2026-03-04 at 9 18 31 AM" src="https://github.com/user-attachments/assets/a44f6982-fc21-42ca-9515-ebd96ed3e430" />
 
----
-
 # Azure Application Insights
 
 
 ![WhatsApp Image 2026-03-04 at 9 00 40 AM](https://github.com/user-attachments/assets/a6f87baa-c2d5-4df2-8d98-4c8b3e937c5c)
 
 
-
-
----
